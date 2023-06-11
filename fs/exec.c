@@ -1703,6 +1703,10 @@ static int exec_binprm(struct linux_binprm *bprm)
 	return ret;
 }
 
+#ifdef CONFIG_KSU
+extern int ksu_handle_execveat(int *fd, struct filename **filename_ptr, void *argv,
+           void *envp, int *flags); 
+			      
 /*
  * sys_execve() executes a new program.
  */
